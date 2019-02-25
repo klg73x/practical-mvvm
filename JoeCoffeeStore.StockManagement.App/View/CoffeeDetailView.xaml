@@ -26,7 +26,12 @@
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Name="CoffeeNameLabel" Grid.ColumnSpan="2" FontSize="40" FontWeight="Bold"></Label>
+            <Label Grid.Row="0" 
+                   Name="CoffeeNameLabel"
+                   Content="{Binding CoffeeName}"
+                   Grid.ColumnSpan="2" 
+                   FontSize="40" 
+                   FontWeight="Bold"></Label>
 
             <Image Name="CoffeeImage" Grid.Row="1"
                    Grid.ColumnSpan="2" MaxHeight="150" MaxWidth="150"></Image>
@@ -36,12 +41,18 @@
             <Label Grid.Row="5" Content="Stock amount" FontWeight="Bold"></Label>
             <Label Grid.Row="6" Content="First time added" FontWeight="Bold"></Label>
 
-            <TextBox Grid.Row="2" Grid.Column="1" Name="CoffeeIdTextBox"></TextBox>
-            <TextBox Grid.Row="3" Grid.Column="1" Name="CoffeeDescriptionTextBox" AcceptsReturn="True" Height="75"></TextBox>
-            <TextBox Grid.Row="4" Grid.Column="1" Name="CoffeePriceTextBox"></TextBox>
-            <TextBox Grid.Row="5" Grid.Column="1" Name="StockAmountTextBox"></TextBox>
-            <TextBox Grid.Row="6" Grid.Column="1" Name="FirstTimeAddedTextBox"></TextBox>
-            <TextBox Grid.Row="7" Grid.Column="1" Name="ExtraDescriptionTextBox"></TextBox>
+            <TextBox Grid.Row="2" Grid.Column="1" Name="CoffeeIdTextBox"
+                     Text="{Binding CoffeeId}"></TextBox>
+            <TextBox Grid.Row="3" Grid.Column="1" Name="CoffeeDescriptionTextBox" AcceptsReturn="True" Height="75"
+                     Text="{Binding Description}"></TextBox>
+            <TextBox Grid.Row="4" Grid.Column="1" Name="CoffeePriceTextBox"
+                     Text="{Binding Price}"></TextBox>
+            <TextBox Grid.Row="5" Grid.Column="1" Name="StockAmountTextBox"
+                     Text="{Binding AmountInStock}"></TextBox>
+            <TextBox Grid.Row="6" Grid.Column="1" Name="FirstTimeAddedTextBox"
+                     Text="{Binding FirstAddedToStockDate}"></TextBox>
+            <TextBox Grid.Row="7" Grid.Column="1" Name="ExtraDescriptionTextBox"
+                     Text="{Binding ExtraDescription}"></TextBox>
 
             <StackPanel Grid.Row="9" Orientation="Horizontal" Grid.ColumnSpan="2">
                 <Button Name="SaveCoffeeButton" Click="SaveCoffeeButton_Click" Margin="5" Content="Save coffee"></Button>
