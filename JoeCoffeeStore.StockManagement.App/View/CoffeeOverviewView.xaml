@@ -4,14 +4,18 @@
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       Title="Joe's Coffee Store stock management" 
                       Height="480" 
-                      Width="640">
+                      Width="640"
+                      DataContext="{Binding Source={StaticResource mainViewModelLocator}, Path=CoffeeOverviewViewModel}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" Margin="5"
-                  Name="CoffeeListView" SelectionChanged="CoffeeListView_SelectionChanged">
+        <ListView Grid.Column="0" 
+                  Margin="5" 
+                  ItemsSource="{Binding Coffees}"
+                  SelectedItem="{Binding SelectedCoffee}"
+                  Name="CoffeeListView">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="#CCCCCC" BorderThickness="1">
@@ -37,7 +41,7 @@
                         </Grid>
                     </Border>
                 </DataTemplate>
-            </ListView.ItemTemplate>            
+            </ListView.ItemTemplate>
         </ListView>
         <Grid Grid.Column="1" Margin="5">
             <Grid.RowDefinitions>
@@ -54,7 +58,9 @@
                 <ColumnDefinition Width="150"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Name="CoffeeImage" Grid.Row="0"
+            <Image Name="CoffeeImage"
+                   Source="{Binding SelectedCoffee.ImageId, Converter={StaticResource localImageConverter}}"
+                   Grid.Row="0"
                    Grid.ColumnSpan="2" MaxHeight="150" MaxWidth="150"></Image>
             <Label Grid.Row="1" Content="Id" FontWeight="Bold"></Label>
             <Label Grid.Row="2" Content="Coffee name" FontWeight="Bold"></Label>
@@ -63,16 +69,24 @@
             <Label Grid.Row="5" Content="Stock amount" FontWeight="Bold"></Label>
             <Label Grid.Row="6" Content="First time added" FontWeight="Bold"></Label>
 
-            <Label Grid.Row="1" Grid.Column="1" Name="CoffeeIdLabel"></Label>
-            <Label Grid.Row="2" Grid.Column="1" Name="CoffeeNameLabel"></Label>
-            <Label Grid.Row="3" Grid.Column="1" Name="DescriptionLabel"></Label>
-            <Label Grid.Row="4" Grid.Column="1" Name="PriceLabel"></Label>
-            <Label Grid.Row="5" Grid.Column="1" Name="StockAmountLabel"></Label>
-            <Label Grid.Row="6" Grid.Column="1" Name="FirstTimeAddedLabel"></Label>
+            <Label Grid.Row="1" 
+                   Grid.Column="1" 
+                   Name="CoffeeIdLabel"
+                   Content="{Binding SelectedCoffee.CoffeeId, Mode=OneWay}"></Label>
+            <Label Grid.Row="2" Grid.Column="1" Name="CoffeeNameLabel"
+                   Content="{Binding SelectedCoffee.CoffeeName, Mode=OneWay}"></Label>
+            <Label Grid.Row="3" Grid.Column="1" Name="DescriptionLabel"
+                   Content="{Binding SelectedCoffee.Description, Mode=OneWay}"></Label>
+            <Label Grid.Row="4" Grid.Column="1" Name="PriceLabel"
+                   Content="{Binding SelectedCoffee.Price, Mode=OneWay}"></Label>
+            <Label Grid.Row="5" Grid.Column="1" Name="StockAmountLabel"
+                   Content="{Binding SelectedCoffee.AmountInStock, Mode=OneWay}"></Label>
+            <Label Grid.Row="6" Grid.Column="1" Name="FirstTimeAddedLabel"
+                   Content="{Binding SelectedCoffee.FirstAddedToStockDate, Mode=OneWay}"></Label>
 
             <StackPanel Grid.Row="7" Orientation="Horizontal" Grid.ColumnSpan="2">
-                <Button  Name="EditCoffeeButton" Click="EditCoffeeButton_Click"  Content="Edit coffee"></Button>
-                <Button  Name="AddFakeCoffee" Click="AddFakeCoffeeButton_Click"  Content="Add fake coffee"></Button>
+                <Button  Name="EditCoffeeButton" Content="Edit coffee"></Button>
+                <Button  Name="AddFakeCoffee" Content="Add fake coffee"></Button>
             </StackPanel>
         </Grid>
     </Grid>

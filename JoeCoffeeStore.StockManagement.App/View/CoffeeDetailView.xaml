@@ -5,9 +5,9 @@
         Title="Joe's Coffee Store stock management" 
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         Height="400" 
-        Width="600">
-    <ScrollViewer>
-        
+        Width="600"
+        DataContext="{Binding Source={StaticResource mainViewModelLocator}, Path=GetCoffeeDetailViewModel}">
+    <ScrollViewer>        
         <Grid Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"></ColumnDefinition>
@@ -28,12 +28,14 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" 
                    Name="CoffeeNameLabel"
-                   Content="{Binding CoffeeName, Mode=OneWay}"
+                   Content="{Binding SelectedCoffee.CoffeeName, Mode=OneWay}"
                    Grid.ColumnSpan="2" 
                    FontSize="40" 
                    FontWeight="Bold"></Label>
 
-            <Image Name="CoffeeImage" Grid.Row="1"
+            <Image Name="CoffeeImage" 
+                   Source="{Binding SelectedCoffee.ImageId, Converter={StaticResource localImageConverter}}"
+                   Grid.Row="1"
                    Grid.ColumnSpan="2" MaxHeight="150" MaxWidth="150"></Image>
             <Label Grid.Row="2" Content="Id" FontWeight="Bold"></Label>
             <Label Grid.Row="3" Content="Description" FontWeight="Bold" VerticalAlignment="Center"></Label>
@@ -42,17 +44,17 @@
             <Label Grid.Row="6" Content="First time added" FontWeight="Bold"></Label>
 
             <TextBox Grid.Row="2" Grid.Column="1" Name="CoffeeIdTextBox"
-                     Text="{Binding CoffeeId, Mode=OneWay}"></TextBox>
+                     Text="{Binding SelectedCoffee.CoffeeId, Mode=OneWay}"></TextBox>
             <TextBox Grid.Row="3" Grid.Column="1" Name="CoffeeDescriptionTextBox" AcceptsReturn="True" Height="75"
-                     Text="{Binding Description}"></TextBox>
+                     Text="{Binding SelectedCoffee.Description}"></TextBox>
             <TextBox Grid.Row="4" Grid.Column="1" Name="CoffeePriceTextBox"
-                     Text="{Binding Price}"></TextBox>
+                     Text="{Binding SelectedCoffee.Price}"></TextBox>
             <TextBox Grid.Row="5" Grid.Column="1" Name="StockAmountTextBox"
-                     Text="{Binding AmountInStock}"></TextBox>
+                     Text="{Binding SelectedCoffee.AmountInStock}"></TextBox>
             <TextBox Grid.Row="6" Grid.Column="1" Name="FirstTimeAddedTextBox"
-                     Text="{Binding FirstAddedToStockDate}"></TextBox>
+                     Text="{Binding SelectedCoffee.FirstAddedToStockDate}"></TextBox>
             <TextBox Grid.Row="7" Grid.Column="1" Name="ExtraDescriptionTextBox"
-                     Text="{Binding ExtraDescription}"></TextBox>
+                     Text="{Binding SelectedCoffee.ExtraDescription}"></TextBox>
 
             <StackPanel Grid.Row="9" Orientation="Horizontal" Grid.ColumnSpan="2">
                 <Button Name="SaveCoffeeButton" Click="SaveCoffeeButton_Click" Margin="5" Content="Save coffee"></Button>
