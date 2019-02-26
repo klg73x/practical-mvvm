@@ -10,9 +10,34 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" Margin="5" DisplayMemberPath="CoffeeName"
+        <ListView Grid.Column="0" Margin="5"
                   Name="CoffeeListView" SelectionChanged="CoffeeListView_SelectionChanged">
-            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="#CCCCCC" BorderThickness="1">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="15"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image Source="{Binding ImageId, Converter={StaticResource localImageConverter}}" Grid.RowSpan="2" VerticalAlignment="Center"></Image>
+                            <Label Content="{Binding CoffeeName}" FontSize="14" Grid.Column="1"  Grid.ColumnSpan="2" FontWeight="Bold"></Label>
+                            <StackPanel  Grid.Row="1" Orientation="Horizontal" Grid.Column="1">
+                                <Label Content="Stock: "></Label>
+                                <Label Content="{Binding AmountInStock}"></Label>
+                            </StackPanel>
+                            <Label Content="{Binding Price, Converter={StaticResource localPriceConverter}}" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="2" ></Label>
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>            
         </ListView>
         <Grid Grid.Column="1" Margin="5">
             <Grid.RowDefinitions>
@@ -45,8 +70,9 @@
             <Label Grid.Row="5" Grid.Column="1" Name="StockAmountLabel"></Label>
             <Label Grid.Row="6" Grid.Column="1" Name="FirstTimeAddedLabel"></Label>
 
-            <StackPanel Grid.Row="7" >
+            <StackPanel Grid.Row="7" Orientation="Horizontal" Grid.ColumnSpan="2">
                 <Button  Name="EditCoffeeButton" Click="EditCoffeeButton_Click"  Content="Edit coffee"></Button>
+                <Button  Name="AddFakeCoffee" Click="AddFakeCoffeeButton_Click"  Content="Add fake coffee"></Button>
             </StackPanel>
         </Grid>
     </Grid>

@@ -28,7 +28,7 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" 
                    Name="CoffeeNameLabel"
-                   Content="{Binding CoffeeName}"
+                   Content="{Binding CoffeeName, Mode=OneWay}"
                    Grid.ColumnSpan="2" 
                    FontSize="40" 
                    FontWeight="Bold"></Label>
@@ -42,7 +42,7 @@
             <Label Grid.Row="6" Content="First time added" FontWeight="Bold"></Label>
 
             <TextBox Grid.Row="2" Grid.Column="1" Name="CoffeeIdTextBox"
-                     Text="{Binding CoffeeId}"></TextBox>
+                     Text="{Binding CoffeeId, Mode=OneWay}"></TextBox>
             <TextBox Grid.Row="3" Grid.Column="1" Name="CoffeeDescriptionTextBox" AcceptsReturn="True" Height="75"
                      Text="{Binding Description}"></TextBox>
             <TextBox Grid.Row="4" Grid.Column="1" Name="CoffeePriceTextBox"
