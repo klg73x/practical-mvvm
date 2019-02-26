@@ -1,9 +1,11 @@
 ﻿using JoeCoffeeStore.StockManagement.App.Extensions;
 using JoeCoffeeStore.StockManagement.App.Services;
+using JoeCoffeeStore.StockManagement.App.Utility;
 using JoeCoffeeStore.StockManagement.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace JoeCoffeeStore.StockManagement.App.ViewModel
 {
@@ -11,6 +13,9 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
     {
         private CoffeeDataService coffeeDataService;
         private ObservableCollection<Coffee> coffees;
+
+        public ICommand EditCommand { get; set; }
+
         public ObservableCollection<Coffee> Coffees
         {
             get
@@ -43,6 +48,26 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
         {
             coffeeDataService = new CoffeeDataService();
             LoadData();
+            LoadCommands();
+        }
+
+        private void LoadCommands()
+        {
+            EditCommand = new CustomCommand(EditCoffee, CanEditCoffee);
+        }
+
+        private void EditCoffee(object obj)
+        {
+
+        }
+
+        private bool CanEditCoffee(object obj)
+        {
+            if (SelectedCoffee != null)
+            {
+                return true;
+            }
+            else { return false; }
         }
 
         private void LoadData()

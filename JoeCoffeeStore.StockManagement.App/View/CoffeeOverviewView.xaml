@@ -85,7 +85,9 @@
                    Content="{Binding SelectedCoffee.FirstAddedToStockDate, Mode=OneWay}"></Label>
 
             <StackPanel Grid.Row="7" Orientation="Horizontal" Grid.ColumnSpan="2">
-                <Button  Name="EditCoffeeButton" Content="Edit coffee"></Button>
+                <Button  Name="EditCoffeeButton"
+                         Content="Edit coffee"
+                         Command="{Binding EditCommand}"></Button>
                 <Button  Name="AddFakeCoffee" Content="Add fake coffee"></Button>
             </StackPanel>
         </Grid>

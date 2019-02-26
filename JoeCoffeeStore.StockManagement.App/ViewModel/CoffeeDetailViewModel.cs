@@ -1,16 +1,17 @@
-﻿using JoeCoffeeStore.StockManagement.Model;
-using System;
-using System.Collections.Generic;
+﻿using JoeCoffeeStore.StockManagement.App.Utility;
+using JoeCoffeeStore.StockManagement.Model;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace JoeCoffeeStore.StockManagement.App.ViewModel
 {
     public class CoffeeDetailViewModel : INotifyPropertyChanged
     {
         private Coffee _selectedCoffee;
+        public ICommand SaveCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+
+
         public Coffee SelectedCoffee
         {
             get
@@ -25,6 +26,27 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
         }
 
         public CoffeeDetailViewModel()
+        {
+            SaveCommand = new CustomCommand(SaveCoffee, CanSaveCoffee);
+            DeleteCommand = new CustomCommand(DeleteCoffee, CanDeleteCoffee);
+        }
+
+        private bool CanDeleteCoffee(object obj)
+        {
+            return true;
+        }
+
+        private void DeleteCoffee(object coffee)
+        {
+
+        }
+
+        private bool CanSaveCoffee(object obj)
+        {
+            return true;
+        }
+
+        private void SaveCoffee(object Coffee)
         {
 
         }

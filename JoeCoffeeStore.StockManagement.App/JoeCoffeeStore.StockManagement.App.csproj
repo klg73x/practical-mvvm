@@ -65,6 +65,7 @@
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Services\CoffeeDataService.cs" />
     <Compile Include="Services\IDataService.cs" />
+    <Compile Include="Utility\CustomCommand.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModel\CoffeeDetailViewModel.cs" />
     <Compile Include="ViewModel\CoffeeOverviewViewModel.cs" />
