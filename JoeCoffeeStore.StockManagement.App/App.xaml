@@ -10,6 +10,7 @@
             <converter:PriceConverter x:Key="localPriceConverter"/>
             <converter:ImageConverter x:Key="localImageConverter"/>
             <converter:AmountInStockConverter x:Key="localAmountInStockConverter"/>
+            <converter:DoNothingConverter x:Key="localDoNothingConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />

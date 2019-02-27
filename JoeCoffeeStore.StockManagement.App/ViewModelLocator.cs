@@ -10,6 +10,6 @@ namespace JoeCoffeeStore.StockManagement.App
     public class ViewModelLocator
     {
         public static CoffeeOverviewViewModel CoffeeOverviewViewModel { get; } = new CoffeeOverviewViewModel();
-        public static CoffeeDetailViewModel GetCoffeeDetailViewModel { get; } = new CoffeeDetailViewModel();
+        public static CoffeeDetailViewModel CoffeeDetailViewModel { get; } = new CoffeeDetailViewModel();
     }
 }

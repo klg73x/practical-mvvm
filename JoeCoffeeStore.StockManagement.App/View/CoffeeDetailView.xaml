@@ -6,8 +6,10 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         Height="400" 
         Width="600"
-        DataContext="{Binding Source={StaticResource mainViewModelLocator}, Path=GetCoffeeDetailViewModel}">
-    <ScrollViewer>        
+        xmlns:viewmodels="clr-namespace:JoeCoffeeStore.StockManagement.App.ViewModel"
+        DataContext="{Binding Source={StaticResource mainViewModelLocator}, Path=CoffeeDetailViewModel}">
+    <ScrollViewer>
+
         <Grid Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"></ColumnDefinition>
@@ -26,16 +28,7 @@
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" 
-                   Name="CoffeeNameLabel"
-                   Content="{Binding SelectedCoffee.CoffeeName, Mode=OneWay}"
-                   Grid.ColumnSpan="2" 
-                   FontSize="40" 
-                   FontWeight="Bold"></Label>
-
-            <Image Name="CoffeeImage" 
-                   Source="{Binding SelectedCoffee.ImageId, Converter={StaticResource localImageConverter}}"
-                   Grid.Row="1"
+            <Image Source="{Binding SelectedCoffee.ImageId, Converter={StaticResource localImageConverter}, Mode=OneWay}" Grid.Row="1"
                    Grid.ColumnSpan="2" MaxHeight="150" MaxWidth="150"></Image>
             <Label Grid.Row="2" Content="Id" FontWeight="Bold"></Label>
             <Label Grid.Row="3" Content="Description" FontWeight="Bold" VerticalAlignment="Center"></Label>
@@ -43,28 +36,23 @@
             <Label Grid.Row="5" Content="Stock amount" FontWeight="Bold"></Label>
             <Label Grid.Row="6" Content="First time added" FontWeight="Bold"></Label>
 
-            <TextBox Grid.Row="2" Grid.Column="1" Name="CoffeeIdTextBox"
-                     Text="{Binding SelectedCoffee.CoffeeId, Mode=OneWay}"></TextBox>
-            <TextBox Grid.Row="3" Grid.Column="1" Name="CoffeeDescriptionTextBox" AcceptsReturn="True" Height="75"
-                     Text="{Binding SelectedCoffee.Description}"></TextBox>
-            <TextBox Grid.Row="4" Grid.Column="1" Name="CoffeePriceTextBox"
-                     Text="{Binding SelectedCoffee.Price}"></TextBox>
-            <TextBox Grid.Row="5" Grid.Column="1" Name="StockAmountTextBox"
-                     Text="{Binding SelectedCoffee.AmountInStock}"></TextBox>
-            <TextBox Grid.Row="6" Grid.Column="1" Name="FirstTimeAddedTextBox"
-                     Text="{Binding SelectedCoffee.FirstAddedToStockDate}"></TextBox>
-            <TextBox Grid.Row="7" Grid.Column="1" Name="ExtraDescriptionTextBox"
-                     Text="{Binding SelectedCoffee.ExtraDescription}"></TextBox>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedCoffee.CoffeeId, Converter={StaticResource localDoNothingConverter}, Mode=TwoWay}"></TextBox>
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedCoffee.Description, Mode=TwoWay}" AcceptsReturn="True" Height="75"></TextBox>
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedCoffee.Price, Mode=TwoWay}"></TextBox>
+            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding SelectedCoffee.AmountInStock, Mode=TwoWay}"></TextBox>
+            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedCoffee.FirstAddedToStockDate, Mode=TwoWay}"></TextBox>
+            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding SelectedCoffee.ExtraDescription, Mode=TwoWay, FallbackValue='NA'}"></TextBox>
 
             <StackPanel Grid.Row="9" Orientation="Horizontal" Grid.ColumnSpan="2">
-                <Button Content="Save coffee" Margin="5">
+
+                <Button Margin="5" Content="Save coffee">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding SaveCommand}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </Button>
-                <Button Content="Delete coffee" Margin="5">
+                <Button Margin="5" Content="Delete coffee">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding DeleteCommand}"/>

@@ -1,5 +1,8 @@
-﻿using JoeCoffeeStore.StockManagement.App.Utility;
+﻿using JoeCoffeeStore.StockManagement.App.Messages;
+using JoeCoffeeStore.StockManagement.App.Services;
+using JoeCoffeeStore.StockManagement.App.Utility;
 using JoeCoffeeStore.StockManagement.Model;
+using System;
 using System.ComponentModel;
 using System.Windows.Input;
 
@@ -7,28 +10,38 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
 {
     public class CoffeeDetailViewModel : INotifyPropertyChanged
     {
-        private Coffee _selectedCoffee;
+        private CoffeeDataService coffeeDataService;
+       
         public ICommand SaveCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
 
-
+        private Coffee selectedCoffee;
         public Coffee SelectedCoffee
         {
             get
             {
-                return _selectedCoffee;
+                return selectedCoffee;
             }
             set
             {
-                _selectedCoffee = value;
+                selectedCoffee = value;
                 RaisePropertyChanged("SelectedCoffee");
             }
         }
 
         public CoffeeDetailViewModel()
         {
+            Messenger.Default.Register<Coffee>(this, OnCoffeeReceived);
+
             SaveCommand = new CustomCommand(SaveCoffee, CanSaveCoffee);
             DeleteCommand = new CustomCommand(DeleteCoffee, CanDeleteCoffee);
+
+            coffeeDataService = new CoffeeDataService();
+        }
+
+        private void OnCoffeeReceived(Coffee coffee)
+        {
+            SelectedCoffee = coffee;
         }
 
         private bool CanDeleteCoffee(object obj)
@@ -38,7 +51,8 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
 
         private void DeleteCoffee(object coffee)
         {
-
+            coffeeDataService.DeleteCoffee(selectedCoffee);
+            Messenger.Default.Send<UpdateListMessage>(new UpdateListMessage());
         }
 
         private bool CanSaveCoffee(object obj)
@@ -48,7 +62,8 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
 
         private void SaveCoffee(object Coffee)
         {
-
+            coffeeDataService.UpdateCoffee(selectedCoffee);
+            Messenger.Default.Send<UpdateListMessage>(new UpdateListMessage());
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

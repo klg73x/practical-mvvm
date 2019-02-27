@@ -1,4 +1,5 @@
 ﻿using JoeCoffeeStore.StockManagement.App.Extensions;
+using JoeCoffeeStore.StockManagement.App.Messages;
 using JoeCoffeeStore.StockManagement.App.Services;
 using JoeCoffeeStore.StockManagement.App.Utility;
 using JoeCoffeeStore.StockManagement.Model;
@@ -13,6 +14,7 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
     {
         private CoffeeDataService coffeeDataService;
         private ObservableCollection<Coffee> coffees;
+        private DialogService dialogService;
 
         public ICommand EditCommand { get; set; }
 
@@ -47,8 +49,17 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
         public CoffeeOverviewViewModel()
         {
             coffeeDataService = new CoffeeDataService();
+            dialogService = new DialogService();
             LoadData();
             LoadCommands();
+
+            Messenger.Default.Register<UpdateListMessage>(this, OnUpdateListMessageReceived);
+        }
+
+        private void OnUpdateListMessageReceived(UpdateListMessage obj)
+        {
+            LoadData();
+            dialogService.CloseDialog();
         }
 
         private void LoadCommands()
@@ -58,7 +69,8 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
 
         private void EditCoffee(object obj)
         {
-
+            Messenger.Default.Send<Coffee>(_selectedCoffee);
+            dialogService.ShowDialog();
         }
 
         private bool CanEditCoffee(object obj)
