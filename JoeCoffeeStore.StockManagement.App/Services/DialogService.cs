@@ -8,17 +8,22 @@ using System.Windows;
 
 namespace JoeCoffeeStore.StockManagement.App.Services
 {
-    public class DialogService
+    public class DialogService : IDialogService
     {
         Window coffeeDetailView = null;
 
-        public void ShowDialog()
+        public DialogService()
+        {
+
+        }
+
+        public void ShowDetailDialog()
         {
             coffeeDetailView = new CoffeeDetailView();
             coffeeDetailView.ShowDialog();
         }
 
-        public void CloseDialog()
+        public void CloseDetailDialog()
         {
             if (coffeeDetailView != null)
             {

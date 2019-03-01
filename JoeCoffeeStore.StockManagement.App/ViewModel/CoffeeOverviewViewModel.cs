@@ -11,10 +11,10 @@ using System.Windows.Input;
 namespace JoeCoffeeStore.StockManagement.App.ViewModel
 {
     public class CoffeeOverviewViewModel : INotifyPropertyChanged
-    {
-        private CoffeeDataService coffeeDataService;
+    {       
         private ObservableCollection<Coffee> coffees;
-        private DialogService dialogService;
+        private ICoffeeDataService coffeeDataService;
+        private IDialogService dialogService;
 
         public ICommand EditCommand { get; set; }
 
@@ -46,10 +46,11 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
             }
         }
 
-        public CoffeeOverviewViewModel()
+        public CoffeeOverviewViewModel(ICoffeeDataService coffeeDataService,
+            IDialogService dialogService)
         {
-            coffeeDataService = new CoffeeDataService();
-            dialogService = new DialogService();
+            this.coffeeDataService = coffeeDataService;
+            this.dialogService = dialogService;
             LoadData();
             LoadCommands();
 
@@ -59,7 +60,7 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
         private void OnUpdateListMessageReceived(UpdateListMessage obj)
         {
             LoadData();
-            dialogService.CloseDialog();
+            dialogService.CloseDetailDialog();
         }
 
         private void LoadCommands()
@@ -70,7 +71,7 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
         private void EditCoffee(object obj)
         {
             Messenger.Default.Send<Coffee>(_selectedCoffee);
-            dialogService.ShowDialog();
+            dialogService.ShowDetailDialog();
         }
 
         private bool CanEditCoffee(object obj)

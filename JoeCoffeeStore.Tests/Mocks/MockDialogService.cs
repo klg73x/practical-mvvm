@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JoeCoffeeStore.StockManagement.Tests.Mocks
+namespace JoeCoffeeStore.Tests.Mocks
 {
     public class MockDialogService: IDialogService
     {
         public void CloseDetailDialog()
         {
-            
         }
 
         public void ShowDetailDialog()

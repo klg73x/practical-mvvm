@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FA2A5B55-4566-4BBF-AFF5-3838DEECB72E}</ProjectGuid>
+    <ProjectGuid>{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JoeCoffeeStore.StockManagement.Tests</RootNamespace>
-    <AssemblyName>JoeCoffeeStore.StockManagement.Tests</AssemblyName>
+    <RootNamespace>JoeCoffeeStore.Tests</RootNamespace>
+    <AssemblyName>JoeCoffeeStore.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,14 +50,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CoffeeOverviewViewModelTests.cs" />
     <Compile Include="Mocks\MockCoffeeDataService.cs" />
     <Compile Include="Mocks\MockDialogService.cs" />
     <Compile Include="Mocks\MockRepository.cs" />
-    <Compile Include="CoffeeOverviewViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CoffeeDataServiceTest.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\JoeCoffeeStore.StockManagement.App\JoeCoffeeStore.StockManagement.App.csproj">
       <Project>{681d488e-7d03-477b-a06e-88d82bdca045}</Project>

@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoeCoffeeStore.StockManagement.App", "JoeCoffeeStore.StockManagement.App\JoeCoffeeStore.StockManagement.App.csproj", "{681D488E-7D03-477B-A06E-88D82BDCA045}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoeCoffeeStore.StockManagement.DAL", "JoeCoffeeStore.StockManagement.DAL\JoeCoffeeStore.StockManagement.DAL.csproj", "{E3B151D2-E608-47FF-833B-E09B19028B55}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoeCoffeeStore.StockManagement.Model", "JoeCoffeeStore.StockManagement.Model\JoeCoffeeStore.StockManagement.Model.csproj", "{21910AF4-AF73-4357-BB40-117D74A51640}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoeCoffeeStore.Tests", "JoeCoffeeStore.Tests\JoeCoffeeStore.Tests.csproj", "{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,8 +53,27 @@ Global
 		{21910AF4-AF73-4357-BB40-117D74A51640}.Release|ARM.ActiveCfg = Release|Any CPU
 		{21910AF4-AF73-4357-BB40-117D74A51640}.Release|x64.ActiveCfg = Release|Any CPU
 		{21910AF4-AF73-4357-BB40-117D74A51640}.Release|x86.ActiveCfg = Release|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Debug|ARM.Build.0 = Debug|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Debug|x64.Build.0 = Debug|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Debug|x86.Build.0 = Debug|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Release|ARM.ActiveCfg = Release|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Release|ARM.Build.0 = Release|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Release|x64.ActiveCfg = Release|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Release|x64.Build.0 = Release|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Release|x86.ActiveCfg = Release|Any CPU
+		{AD2C20F4-86CD-4F51-B5C2-1A678CC836A2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE709A97-079C-4C61-AD33-8E7D6A1A2422}
 	EndGlobalSection
 EndGlobal

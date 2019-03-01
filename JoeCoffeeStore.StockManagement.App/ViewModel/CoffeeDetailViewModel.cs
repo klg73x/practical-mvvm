@@ -10,7 +10,8 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
 {
     public class CoffeeDetailViewModel : INotifyPropertyChanged
     {
-        private CoffeeDataService coffeeDataService;
+        private ICoffeeDataService coffeeDataService;
+        private IDialogService dialogService;
        
         public ICommand SaveCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
@@ -29,14 +30,15 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
             }
         }
 
-        public CoffeeDetailViewModel()
+        public CoffeeDetailViewModel(ICoffeeDataService coffeeDataService, 
+            IDialogService dialogService)
         {
             Messenger.Default.Register<Coffee>(this, OnCoffeeReceived);
 
             SaveCommand = new CustomCommand(SaveCoffee, CanSaveCoffee);
             DeleteCommand = new CustomCommand(DeleteCoffee, CanDeleteCoffee);
 
-            coffeeDataService = new CoffeeDataService();
+            this.coffeeDataService = coffeeDataService;
         }
 
         private void OnCoffeeReceived(Coffee coffee)

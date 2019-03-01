@@ -1,5 +1,4 @@
-﻿using JoeCoffeeStore.StockManagement.App.Services;
-using JoeCoffeeStore.StockManagement.DAL;
+﻿using JoeCoffeeStore.StockManagement.DAL;
 using JoeCoffeeStore.StockManagement.Model;
 using System;
 using System.Collections.Generic;
@@ -7,11 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JoeCoffeeStore.StockManagement.Tests.Mocks
+namespace JoeCoffeeStore.Tests.Mocks
 {
-    public class MockRepository : ICoffeeRepository
+    public class MockRepository: ICoffeeRepository
     {
-
         private List<Coffee> coffees;
 
         public MockRepository()

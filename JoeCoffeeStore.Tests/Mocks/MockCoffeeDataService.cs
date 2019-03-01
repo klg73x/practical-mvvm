@@ -6,15 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JoeCoffeeStore.StockManagement.Tests.Mocks
+namespace JoeCoffeeStore.Tests.Mocks
 {
     public class MockCoffeeDataService: ICoffeeDataService
     {
         private MockRepository repository = new MockRepository();
 
-        public void DeleteCoffee(Model.Coffee coffee)
+        public void DeleteCoffee(Coffee coffee)
         {
-            
+
         }
 
         public List<Coffee> GetAllCoffees()
@@ -28,9 +28,11 @@ namespace JoeCoffeeStore.StockManagement.Tests.Mocks
             return coffee;
         }
 
-        public void UpdateCoffee(Model.Coffee coffee)
+        public void UpdateCoffee(Coffee coffee)
         {
-           
+
         }
+
+
     }
 }

@@ -1,13 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using JoeCoffeeStore.StockManagement.App.Services;
-using JoeCoffeeStore.StockManagement.Tests.Mocks;
+using JoeCoffeeStore.Tests.Mocks;
 using JoeCoffeeStore.StockManagement.App.ViewModel;
 using JoeCoffeeStore.StockManagement.Model;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace JoeCoffeeStore.StockManagement.Tests
+namespace JoeCoffeeStore.Tests
 {
     [TestClass]
     public class CoffeeOverviewViewModelTests
@@ -33,7 +32,7 @@ namespace JoeCoffeeStore.StockManagement.Tests
             //Arrange
             ObservableCollection<Coffee> coffees = null;
             var expectedCoffees = coffeeDataService.GetAllCoffees();
-            
+
             //act
             var viewModel = GetViewModel();
             coffees = viewModel.Coffees;

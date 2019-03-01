@@ -68,6 +68,7 @@
     <Compile Include="Services\CoffeeDataService.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\IDataService.cs" />
+    <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Utility\CustomCommand.cs" />
     <Compile Include="Utility\Messenger.cs" />
     <Compile Include="ViewModelLocator.cs" />
